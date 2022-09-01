@@ -7,7 +7,7 @@ variable "domain" {
 }
 
 variable "certificate_issuer" {
-  description = "he name of the certificate issuer that will be used to issue certificate for the jupyter notebook UI."
+  description = "The name of the certificate issuer that will be used to issue certificate for the jupyter notebook UI."
 }
 
 variable "storage_class" {
