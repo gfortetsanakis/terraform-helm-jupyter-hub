@@ -1,5 +1,5 @@
 resource "kubernetes_secret" "docker_registry_secret" {
-  count = local.create_docker_registry_secret ? 1 : 0
+  count = length(var.docker_registry_secret) != 0 ? 1 : 0
 
   metadata {
     name      = local.docker_registry_secret_name
@@ -11,11 +11,11 @@ resource "kubernetes_secret" "docker_registry_secret" {
   data = {
     ".dockerconfigjson" = jsonencode({
       auths = {
-        "${var.docker_registry_server}" = {
-          "username" = var.docker_registry_username
-          "password" = var.docker_registry_password
-          "email"    = var.docker_registry_email
-          "auth"     = base64encode("${var.docker_registry_username}:${var.docker_registry_password}")
+        "${var.docker_registry_secret["server"]}" = {
+          "username" = var.docker_registry_secret["username"]
+          "password" = var.docker_registry_secret["password"]
+          "email"    = var.docker_registry_secret["email"]
+          "auth"     = base64encode("${var.docker_registry_secret["username"]}:${var.docker_registry_secret["password"]}")
         }
       }
     })

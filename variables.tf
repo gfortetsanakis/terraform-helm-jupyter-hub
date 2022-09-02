@@ -22,24 +22,9 @@ variable "jupyter_notebook_image" {
   description = "The jupyter notebook image to be deployed by the chart."
 }
 
-variable "docker_registry_server" {
-  description = "The docker registry from which to pull the jupyter notebook image. Default is docker hub."
-  default     = "https://index.docker.io/v1/"
-}
-
-variable "docker_registry_username" {
-  description = "The username used to connect to the docker registry."
-  default     = ""
-}
-
-variable "docker_registry_password" {
-  description = "The password used to connect to the docker registry."
-  default     = ""
-}
-
-variable "docker_registry_email" {
-  description = "The email account associated with the docker registry"
-  default     = ""
+variable "docker_registry_secret" {
+  description = "A map variable containing an image pull secret for connecting to the docker registry from which the jupyter notebook will be pulled."
+  default     = {}
 }
 
 variable "node_selector" {

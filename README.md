@@ -12,11 +12,18 @@ This module deploys a jupyterhub on a kubernetes cluster.
 | storage_class            | Required | The storage class used to created persistent volume claims for the chart                 |
 | jupyter_service_account  | Required | The kubernetes service account used in the jupyter notebook pod                          |
 | jupyter_notebook_image   | Required | The jupyter notebook image to be deployed by the chart                                   |
-| docker_registry_server   | Optional | The docker registry from which to pull the jupyter notebook image. Default is docker hub |
-| docker_registry_username | Optional | The username used to connect to the docker registry                                      |
-| docker_registry_password | Optional | The password used to connect to the docker registry                                      |
-| docker_registry_email    | Optional | The email account associated with the docker registry                                    |
+| docker_registry_secret   | Optional | A map variable containing an image pull secret for connecting to the docker registry from which the jupyter notebook image will be pulled |
 | node_selector            | Optional | A map variable with nodeSelector labels applied when placing pods of the chart on the cluster |
+
+The structure of the input variable "docker_registry_secret" is as follows:
+```
+docker_registry_secret = {
+  server   = <docker_registry_server>
+  username = <docker_registry_username>
+  password = <docker_registry_password>
+  email    = <docker_registry_email_account>
+}
+```
 
 
 ## Module output parameters
