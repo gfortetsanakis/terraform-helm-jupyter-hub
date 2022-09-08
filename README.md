@@ -32,6 +32,6 @@ docker_registry_secret = {
 
 ## Module output parameters
 
-| Parameter            | Description                              |
-| -------------------- | ---------------------------------------- |
-| jupyter_notebook_url | The URL of the deployed jupyter notebook |
+| Parameter             | Description                       |
+| --------------------- | --------------------------------- |
+| jupyterhub_server_url | The URL of the jupyterHub server  |
